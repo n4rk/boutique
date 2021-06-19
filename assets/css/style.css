@@ -1,0 +1,96 @@
+/*
+    purple : #C300CE
+    pink : #FF5280
+    yellow : #FFA77B
+*/
+
+body {
+    margin :0;
+    padding:0;
+    font-family : "Poppins", "Ubuntu", "Calibri", sans-serif;
+}
+.nav {
+    background-color:#222;
+    font-size:14px;
+}
+.logo a:hover {
+    transform: scale(1.1);
+    transition: .5s ease;
+}
+
+.link .nav-link {
+    color:white;
+    padding:10px 20px !important;
+    border-bottom:2px solid transparent;
+    font-weight: 600;
+}
+.link .nav-link:hover {
+    border-bottom:2px solid #C300CE;
+}
+.cartIcon {
+    font-size: 20px;
+    cursor:pointer;
+}
+.modal-body {
+    font-size:14px;
+}
+
+.rmv {
+    text-decoration: none;
+    font-size: 16px;
+    padding:5px 20px;
+    border-radius: 3px;
+    background-color:rgb(206, 27, 27); 
+    color:white;
+}
+.rmv:hover {
+    background-color: rgb(177, 20, 20);
+    color:white;
+}
+
+
+
+footer {
+    margin-top:20px;
+    font-size:14px;
+    background-color:#222;
+    color:white;
+}
+footer .copyright {
+    padding-top:20px;
+    font-weight:600;
+}
+footer .copyright span {
+    font-weight:400;
+}
+footer .social {
+    padding-top:20px;
+}
+footer .social a {
+    text-decoration: none;
+    margin: 5px 10px;
+    font-size: 20px;
+    border-radius:50%;
+    transition: all 0.25s ease;
+}
+
+footer .social .tw {
+    color:#1da1f2;
+    border:2px solid #1da1f2;
+    padding:5px 8.5px;
+}
+footer .social .gh {
+    font-size: 22px;
+    color:#fff;
+    border:2px solid #fff;
+    padding:4px 8px;
+}
+
+footer .social .tw:hover {
+    color:#fff;
+    background-color: #1da1f2;
+}
+footer .social .gh:hover {
+    color:#222;
+    background-color: #fff;
+}
