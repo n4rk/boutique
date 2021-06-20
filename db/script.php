@@ -36,6 +36,5 @@ foreach($products as $product) {
     }
     $counter++;
 }
-
 echo "<h1>Items added successfully to database !</h1>";
 ?>

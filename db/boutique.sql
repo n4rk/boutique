@@ -13,7 +13,7 @@ PRIMARY KEY (`idUser`),
 UNIQUE KEY `AK1_Customer_CustomerName` (`fullname`)
 ) AUTO_INCREMENT=1;
 
-/*------------------------------*/
+/*-------------------------------*/
 
 CREATE TABLE `products`
 (
