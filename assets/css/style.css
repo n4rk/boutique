@@ -35,6 +35,12 @@ body {
     font-size:14px;
 }
 
+p .categories {
+    color:#FF5280 !important;
+    text-decoration: none;
+    font-weight: 600;
+}
+
 .rmv {
     text-decoration: none;
     font-size: 16px;
@@ -49,9 +55,27 @@ body {
 }
 
 
+.products {
+    margin-left:50px;
+}
+.products .product {
+    height:400px;
+}
+.products .product a {
+    font-size:14px;
+}
+.products .product span{
+    font-weight:bold;
+}
+.products p {
+    font-weight:bold;
+}
+
 
 footer {
-    margin-top:20px;
+    margin-top:60px;
+    margin-bottom: 0;
+    padding:10px 0px;
     font-size:14px;
     background-color:#222;
     color:white;
