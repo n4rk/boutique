@@ -24,6 +24,7 @@ foreach($products as $product) {
             $product['image']
         ));
     }
+    else break;
     for($i=0;$i<$nb;$i++) {
         $req = $cnx->prepare("INSERT INTO prodcategs(id,sku) VALUES (?,?)");
         $req->execute(array($categories[$i]['id'],$product['sku']));

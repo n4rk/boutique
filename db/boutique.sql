@@ -4,10 +4,12 @@ CREATE TABLE `users`
 (
  `idUser`   int NOT NULL AUTO_INCREMENT ,
  `fullname` varchar(100) NOT NULL ,
- `phone`    varchar(20) NOT NULL ,
- `address`  varchar(200) NOT NULL ,
- `city`     varchar(50) NOT NULL ,
- `country`  varchar(50) NOT NULL ,
+ `email`    varchar(100) NOT NULL ,
+ `password` varchar(100) NOT NULL ,
+ `phone`    varchar(20) NULL ,
+ `address`  varchar(200) NULL ,
+ `city`     varchar(50) NULL ,
+ `country`  varchar(50) NULL ,
 
 PRIMARY KEY (`idUser`),
 UNIQUE KEY `AK1_Customer_CustomerName` (`fullname`)
@@ -87,4 +89,16 @@ KEY `FK_OrderItem_OrderId_Order` (`idOrder`, `idUser`),
 CONSTRAINT `FK_OrderItem_OrderId_Order` FOREIGN KEY `FK_OrderItem_OrderId_Order` (`idOrder`, `idUser`) REFERENCES `orders` (`idOrder`, `idUser`),
 KEY `FK_OrderItem_ProductId_Product` (`sku`),
 CONSTRAINT `FK_OrderItem_ProductId_Product` FOREIGN KEY `FK_OrderItem_ProductId_Product` (`sku`) REFERENCES `products` (`sku`)
+);
+
+/* ---------------------------- */
+
+CREATE TABLE `contact`
+(
+ `id`      int NOT NULL ,
+ `name`    varchar(100) NOT NULL ,
+ `email`   varchar(100) NOT NULL ,
+ `message` text NOT NULL ,
+
+PRIMARY KEY (`id`)
 );

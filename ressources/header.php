@@ -1,5 +1,8 @@
 <?php
 	include "connexion.php";
+	if(isset($_GET['decon'])) {
+		session_unset();
+	}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,6 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Boutique</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.5/pagination.css" integrity="sha512-QmxybGIvkSI8+CGxkt5JAcGOKIzHDqBMs/hdemwisj4EeGLMXxCm9h8YgoCwIvndnuN1NdZxT4pdsesLXSaKaA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<link rel="stylesheet" href="assets/css/style.css">
@@ -26,17 +30,28 @@
 					<a class="nav-link" href="index.php"><i class="fa fa-home mr-1"></i> Home</a>
 				</li>
 				<li class="nav-item me-3 me-lg-1 link">
-					<a class="nav-link" href="about.php"><i class="fa fa-info-circle mr-1"></i> About</a>
-				</li>
-				<li class="nav-item me-3 me-lg-1 link">
 					<a class="nav-link" href="contact.php"><i class="fa fa-envelope mr-1"></i> Contact</a>
 				</li>
+				<?php
+				if(isset($_SESSION['user'])) {
+				?>
 				<li class="nav-item me-3 me-lg-1 link">
-					
-				
+					<a class="nav-link" href="?decon"><i class="fa fa-sign-out-alt mr-1"></i> Logout</a>
+				</li>
+				<?php
+					}
+					else {
+				?>
+				<li class="nav-item me-3 me-lg-1 link">
+					<a class="nav-link" href="login.php"><i class="fa fa-sign-in-alt mr-1"></i> Login</a>
+				</li>
+				<?php
+					}
+				?>
+				<li class="nav-item me-3 me-lg-1 link">
 				<div class="container">
 					<a class="btn text-white cartIcon" data-toggle="modal" data-target="#cartModal">
-						<i class="fa fa-shopping-cart"></i>
+						<i class="fa fa-shopping-cart ml-2"></i>
 					</a>  
 					</div>
 
