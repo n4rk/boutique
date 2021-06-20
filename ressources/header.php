@@ -33,18 +33,18 @@
 					<a class="nav-link" href="contact.php"><i class="fa fa-envelope mr-1"></i> Contact</a>
 				</li>
 				<?php
-				if(isset($_SESSION['user'])) {
+					if(isset($_SESSION['user'])) {
 				?>
-				<li class="nav-item me-3 me-lg-1 link">
-					<a class="nav-link" href="?decon"><i class="fa fa-sign-out-alt mr-1"></i> Logout</a>
-				</li>
+						<li class="nav-item me-3 me-lg-1 link">
+							<a class="nav-link" href="?decon"><i class="fa fa-sign-out-alt mr-1"></i> Logout</a>
+						</li>
 				<?php
 					}
 					else {
 				?>
-				<li class="nav-item me-3 me-lg-1 link">
-					<a class="nav-link" href="login.php"><i class="fa fa-sign-in-alt mr-1"></i> Login</a>
-				</li>
+						<li class="nav-item me-3 me-lg-1 link">
+							<a class="nav-link" href="login.php"><i class="fa fa-sign-in-alt mr-1"></i> Login</a>
+						</li>
 				<?php
 					}
 				?>
@@ -77,20 +77,38 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-								<td class="col-3">
-									<img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/vans.png" class="img-fluid img-thumbnail" alt="Sheep">
-								</td>
-								<td class="col-4">Vans Sk8-Hi MTE Shoes</td>
-								<td class="col-1">89$</td>
-								<td class="col-2"><input type="text" class="form-control" id="input1" value="2"></td>
-								<td class="col-1">178$</td>
-								<td class="col-1"><a href="#" class="rmv"><i class="fa fa-times"></i></a></td>
-								</tr>
+								<?php
+									if(isset($_SESSION['panier'])) {
+										// Select products that are in the cart from the products table and show them
+										for($i=0;$i<count($_SESSION['panier']);$i++)
+											echo "
+												<tr>
+													<td class=\"col-3\">
+														<img src=\"{$_SESSION['panier'][$i]['image']}\" class=\"img-fluid img-thumbnail\">
+													</td>
+													<td class=\"col-4\">{$_SESSION['panier'][$i]['name']}</td>
+													<td class=\"col-1\">{$_SESSION['panier'][$i]['price']} $</td>
+													<td class=\"col-2\"><input type=\"text\" class=\"form-control\" name=\"qty\" value=\"1\"></td>
+													<td class=\"col-1\">{$_SESSION['panier'][$i]['price']}</td>
+													<td class=\"col-1\"><a href=\"#\" class=\"rmv\"><i class=\"fa fa-times\"></i></a></td>
+												</tr>
+											";
+									}
+									else {
+										echo "<tr>
+											<td colspan=\"6\">You don't have any items in your cart !</td>
+										</tr>";
+									}
+								?>
 							</tbody>
 							</table> 
 							<div class="d-flex justify-content-start">
-							<h6>Total: <span class="price text-success">89$</span></h6>
+							<?php
+							if(isset($_SESSION['panier']))
+								echo "<h6>Total: <span class=\"price text-success\">{$_SESSION['panier']['total']} $</span></h6>";
+							else
+								echo "<h6>Total: <span class=\"price text-success\">0 $</span></h6>";
+							?>
 							</div>
 						</div>
 						<div class="modal-footer border-top-0 justify-content-center">

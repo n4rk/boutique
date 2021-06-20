@@ -1,5 +1,16 @@
 <?php
     include "ressources/header.php";
+    if(isset($_GET['addtocart']) AND isset($_GET['sku'])) {
+        $productID = htmlentities($_GET['sku']);
+        $sql= "SELECT * FROM products WHERE sku=$productID";
+        $stat = $cnx->prepare($sql);
+        $stat->execute();
+        $res = $stat->fetchAll();
+        $_SESSION['panier']['image'] = $res[0]['image'];
+        $_SESSION['panier']['name'] = $res[0]['name'];
+        $_SESSION['panier']['price'] = $res[0]['price'];
+        $_SESSION['panier']['quantity'] = 1;
+    }
 ?>
 
 <div class="container">
@@ -28,7 +39,7 @@
         <div class="col-9">
             <?php
             // Affichage des produits
-                $query2 = "SELECT * FROM products";
+                $query2 = "SELECT * FROM products LIMIT 12";
                 $stat = $cnx->prepare($query2);
                 $stat->execute();
                 $res = $stat->fetchAll();
@@ -45,7 +56,7 @@
                                 <a>Model : <span>{$row2['model']}</span></a><br>
                                 <a>Price : <span class=\"text-success\">{$row2['price']} $</span></a><br>
                             </p>
-                            <a href=\"#\" class=\"btn btn-success btn-block\"><i class=\"fa fa-cart-plus\"></i></a>
+                            <a href=\"?addtocart&sku={$row2['sku']}\" class=\"btn btn-success btn-block\"><i class=\"fa fa-cart-plus\"></i></a>
                         </div>
                     </div>
                     ";
